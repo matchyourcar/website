@@ -13,122 +13,158 @@
         }
 
         body {
-            font-family: Arial, sans-serif;
-            background-color: #111; /* Fond sombre pour un style luxueux */
-            color: #fff;
-            overflow-x: hidden; /* Évite le défilement horizontal sur les mobiles */
-        }
-
-        /* Conteneur principal pour le défilement horizontal */
-        .horizontal-scroll {
+            font-family: "Helvetica Light", Arial, sans-serif;
+            background-color: #E9D6CB;
+            color: #273B3A;
+            overflow: hidden;
             display: flex;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory; /* Crée un effet de défilement saccadé */
+            justify-content: center;
+            align-items: center;
         }
 
-        /* Sections horizontales */
-        .section {
-            min-width: 100vw;
+        /* Conteneur principal */
+        .container {
+            position: relative;
+            width: 100vw;
             height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Sections */
+        .section {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
-            scroll-snap-align: start;
-            padding: 20px;
+            flex-direction: column;
             text-align: center;
+            transition: transform 0.6s ease-in-out;
         }
 
-        /* Styles des sections */
+        /* Couleurs de section */
         .section-hero {
-            background-image: url('voiture-luxe.jpg'); /* Image de fond pour le style hero */
-            background-size: cover;
-            background-position: center;
+            background-color: #273B3A;
+            color: #E9D6CB;
         }
 
         .section-about {
-            background-color: #222;
+            background-color: #186974;
+            color: #E9D6CB;
         }
 
         .section-services {
-            background-color: #333;
+            background-color: #E9D6CB;
+            color: #273B3A;
         }
 
         .section-contact {
-            background-color: #444;
+            background-color: #732D24;
+            color: #E9D6CB;
         }
 
-        /* Styles du contenu */
+        /* Contenu */
         h1 {
-            font-size: 3em;
-            margin-bottom: 10px;
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
         p {
             font-size: 1.2em;
             max-width: 600px;
-            line-height: 1.5;
+            line-height: 1.6;
         }
 
-        /* Bouton personnalisé */
+        /* Boutons */
         .cta-button {
             margin-top: 20px;
-            padding: 10px 20px;
-            background-color: #e6b800;
-            color: #111;
-            font-size: 1em;
+            padding: 12px 24px;
+            background-color: #BE4334;
+            color: #E9D6CB;
+            font-size: 1.1em;
             font-weight: bold;
             text-transform: uppercase;
             text-decoration: none;
-            border-radius: 5px;
+            border-radius: 25px;
+            transition: background-color 0.3s ease;
         }
 
-        /* Adaptation mobile */
-        @media (max-width: 768px) {
-            .horizontal-scroll {
-                display: block;
-            }
-            .section {
-                min-width: 100%;
-                height: auto;
-            }
+        .cta-button:hover {
+            background-color: #732D24;
         }
     </style>
 </head>
 <body>
-    <div class="horizontal-scroll">
+    <div class="container">
         <!-- Section Accueil / Hero -->
         <section class="section section-hero">
-            <div>
-                <h1>Bienvenue chez MatchYourCar</h1>
-                <p>Votre expert pour trouver le véhicule parfait, adapté à votre style de vie, vos goûts et vos envies.</p>
-                <a href="#about" class="cta-button">En savoir plus</a>
-            </div>
+            <h1>MatchYourCar</h1>
+            <p>Découvrez une nouvelle expérience de conseil automobile sur-mesure, où chaque détail est pensé pour vous offrir le véhicule parfait.</p>
+            <a href="#about" class="cta-button" onclick="nextSection()">En savoir plus</a>
         </section>
 
         <!-- Section À Propos -->
-        <section class="section section-about" id="about">
-            <div>
-                <h1>À Propos de Nous</h1>
-                <p>Chez MatchYourCar, nous faisons bien plus que vendre des voitures. Nous vous offrons une expérience de conseil personnalisé, pour vous aider à trouver le véhicule qui vous correspond parfaitement.</p>
-            </div>
+        <section class="section section-about">
+            <h1>À Propos</h1>
+            <p>MatchYourCar est bien plus qu’un simple service de conseil. C’est une expérience sur-mesure, avec une équipe de passionnés dédiés à trouver la voiture qui incarne votre style de vie.</p>
+            <a href="#services" class="cta-button" onclick="nextSection()">Nos Services</a>
         </section>
 
         <!-- Section Services -->
-        <section class="section section-services" id="services">
-            <div>
-                <h1>Nos Services</h1>
-                <p>Conseil sur-mesure, accompagnement du choix au financement, recommandations personnalisées… Découvrez tout ce que nous offrons pour faire de votre achat automobile une expérience unique.</p>
-            </div>
+        <section class="section section-services">
+            <h1>Nos Services</h1>
+            <p>De la première consultation à la remise des clés, nous vous accompagnons à chaque étape avec des conseils précis et personnalisés pour faire de votre achat une expérience unique.</p>
+            <a href="#contact" class="cta-button" onclick="nextSection()">Contactez-nous</a>
         </section>
 
         <!-- Section Contact -->
-        <section class="section section-contact" id="contact">
-            <div>
-                <h1>Contactez-nous</h1>
-                <p>Prêt à trouver votre voiture idéale ? Contactez notre équipe d'experts et faites le premier pas vers une nouvelle expérience automobile.</p>
-                <a href="mailto:contact@matchyourcar.com" class="cta-button">Envoyer un Email</a>
-            </div>
+        <section class="section section-contact">
+            <h1>Contactez-nous</h1>
+            <p>Prêt à trouver votre voiture idéale ? Contactez notre équipe d'experts et faites le premier pas vers une nouvelle expérience automobile.</p>
+            <a href="mailto:contact@matchyourcar.com" class="cta-button">Envoyer un Email</a>
         </section>
     </div>
+
+    <script>
+        let currentSection = 0;
+        const sections = document.querySelectorAll('.section');
+
+        function updateSections() {
+            sections.forEach((section, index) => {
+                section.style.transform = `translateY(${100 * (index - currentSection)}vh)`;
+            });
+        }
+
+        function nextSection() {
+            if (currentSection < sections.length - 1) {
+                currentSection++;
+                updateSections();
+            }
+        }
+
+        function previousSection() {
+            if (currentSection > 0) {
+                currentSection--;
+                updateSections();
+            }
+        }
+
+        // Gestion du défilement de la souris pour changer de section
+        document.addEventListener('wheel', (event) => {
+            if (event.deltaY > 0) {
+                nextSection();
+            } else {
+                previousSection();
+            }
+        });
+
+        // Mise à jour initiale
+        updateSections();
+    </script>
 </body>
 </html>
